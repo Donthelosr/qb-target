@@ -90,7 +90,24 @@ Config.GlobalPedOptions = {
 }
 
 Config.GlobalVehicleOptions = {
-
+	options = {
+        {
+            type = 'client',
+            event = 'qb-methcar:cook',
+            icon = 'fas fa-blender',
+            label = 'Lets cook!',
+			canInteract = function(entity)
+                if GetVehicleEngineHealth(entity) <= 0 then return false end
+                	local model = GetEntityModel(entity)
+					local modelName = GetDisplayNameFromVehicleModel(model)
+					if modelName == 'JOURNEY' then
+                    return true
+                end
+                return false
+            end
+        },
+    },
+    distance = 2.0,
 }
 
 Config.GlobalObjectOptions = {
